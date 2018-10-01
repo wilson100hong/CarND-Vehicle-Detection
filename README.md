@@ -32,6 +32,12 @@ The goals / steps of this project are the following:
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.
 
 Writeup: README.md
+main.py: main pipeline for vehicle detction and lane finding (project 4).
+camera.py: camera distortion correction.
+vehicle.py: vehicle classifier and detector.
+lane.py: lane line detection.
+draw.py: utils to draw image.
+
 
 Video: [Video]   [YouTube](https://youtu.be/hycKd8b34gY)   
 
