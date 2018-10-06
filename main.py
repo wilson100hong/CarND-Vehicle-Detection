@@ -42,17 +42,8 @@ def main(args):
     vehicle_detector = VehicleDetector(clf, scaler, feature_params)
     lane_detector = LaneDetector()
 
-    class Temp(object):
-        def __init__(self):
-            self.I = 0
-
-    temp = Temp()
-
     def process_image(input_img):
         img = camera_corrector.correct(input_img)
-
-        # TODO: write image
-        cv2.imwrite('temp/original_{}.png'.format(temp.I), cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
 
         h, w = img.shape[0], img.shape[1]
         # Do vehicle detection.
@@ -63,14 +54,6 @@ def main(args):
         # Draw labeled vehicles.
         canvas_img = draw.draw_labeles(img, labels)
         cv2.imwrite('temp/label_{}.png'.format(temp.I), cv2.cvtColor(canvas_img, cv2.COLOR_RGB2BGR))
-        temp.I += 1
-
-
-        # TODO: debug
-        # label_img = draw.draw_labeles(img, labels)
-        # draw.overlay(bbox_confs_img, label_img, w//2, 0, 0.33)
-        # draw.overlay(bbox_confs_img, heatmap_img, 0, 0, 0.33)
-
 
         # Do lane finding.
         l_fit, r_fit, texts, binary_img, lane_img = lane_detector.detect(img, vis=True)
